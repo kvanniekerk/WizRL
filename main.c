@@ -3,6 +3,8 @@
 #include <string.h>
 #include <ncurses.h>
 
+#include "include/game_math.h"
+
 #define rows 20
 #define cols 100
 
