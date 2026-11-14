@@ -15,7 +15,7 @@ ExternalProject_Add(ncurses_build
     SOURCE_DIR        ${CMAKE_CURRENT_SOURCE_DIR}
     BINARY_DIR        ${CMAKE_CURRENT_BINARY_DIR}/build
     INSTALL_DIR       ${NCURSES_INSTALL_DIR}
-    CONFIGURE_COMMAND <SOURCE_DIR>/configure
+    CONFIGURE_COMMAND sh <SOURCE_DIR>/configure
                           --prefix=<INSTALL_DIR>
                           --without-shared
                           --without-debug

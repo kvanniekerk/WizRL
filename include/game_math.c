@@ -1,6 +1,6 @@
 #include "game_math.h"
 
-int roll(char* dice) { // handles d6, nd6, nd6+x
+int roll(char* dice) { // handles dx, ndx, ndx+y
     srand(time(NULL));
 
     int result = 0;
@@ -15,10 +15,10 @@ int roll(char* dice) { // handles d6, nd6, nd6+x
         diceCount[length] = '\0';
         
         char* sides = pos + 1;
-        char* endptr;
-
-        int rolls = atoi(diceCount);
         int max = atoi(sides);
+        int rolls = atoi(diceCount);
+
+
         if (rolls == 0)
             rolls++;
 
