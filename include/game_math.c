@@ -1,6 +1,6 @@
 #include "game_math.h"
 
-int roll(char* dice) { // handles d6, nd6
+int roll(char* dice) { // handles d6, nd6, nd6+x
     srand(time(NULL));
 
     int result = 0;
@@ -26,12 +26,22 @@ int roll(char* dice) { // handles d6, nd6
         {
             result += (rand() % max + min);
         }
+        
+        int mod = 0;
+        char* pos = strchr(dice, '+');
+
+        if (pos != NULL) {
+            char* modifier = pos + 1;
+            mod = atoi(modifier);
+            result += mod;
+        }
     
-        printf("Input: %s\n", dice);
+       /* printf("Input: %s\n", dice);
         printf("Number of dice: %d\n", rolls);
         printf("Number of sides on dice: %d\n", max);
-        printf("Result: %d\n", result);
+        printf("Modifier: %d\n", mod);
+        printf("Result: %d\n", result);  */
     }
 
-    return 0;
+    return result;
 }
