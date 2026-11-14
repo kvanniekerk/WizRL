@@ -7,7 +7,11 @@ project(ncurses_wrapper C)
 
 include(ExternalProject)
 
-set(NCURSES_INSTALL_DIR ${CMAKE_CURRENT_BINARY_DIR}/install)
+# Install to <build>/ncurses rather than under CMAKE_CURRENT_BINARY_DIR:
+# that path contains ".../include/thirdparty/...", and ncurses' installer
+# rewrites #include <x.h> to <include/x.h> whenever the install path matches
+# "/*/include/*", which breaks curses.h.
+set(NCURSES_INSTALL_DIR ${CMAKE_BINARY_DIR}/ncurses)
 set(NCURSES_LIBRARY     ${NCURSES_INSTALL_DIR}/lib/libncurses.a)
 set(NCURSES_INCLUDE_DIR ${NCURSES_INSTALL_DIR}/include)
 
